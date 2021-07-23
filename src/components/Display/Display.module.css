@@ -1,0 +1,23 @@
+.display {
+    box-sizing: border-box;
+    width: 350px;
+    height: 120px;
+    border: 2px solid blue;
+    border-radius: 5px;
+    margin: 10px;
+}
+
+.counterOK {
+    font-weight: bold;
+    font-size: 50px;
+    padding-top: 25px;
+}
+
+.counterFinish {
+    color: greenyellow;
+    font-weight: bold;
+    font-size: 50px;
+    background-color: deeppink;
+    border: 2px solid deeppink;
+    padding-top: 25px;
+}
