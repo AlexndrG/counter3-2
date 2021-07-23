@@ -2,14 +2,7 @@ import React from 'react';
 import s from './Counter.module.css'
 import {Display} from '../Display/Display';
 import {Button} from '../Button/Button';
-
-type CounterPropsType = {
-    counter: number
-    minValue: number
-    maxValue: number
-    setCounterValue: (value: number) => void
-    enterSetmode: () => void
-}
+import { CounterPropsType } from './CounterContainer';
 
 export const Counter = (props: CounterPropsType) => {
     const increment = () => {
@@ -23,7 +16,7 @@ export const Counter = (props: CounterPropsType) => {
     }
 
     const enterSetmode = () => {
-        props.enterSetmode()
+        props.setCounterMode(false)
     }
 
     return (

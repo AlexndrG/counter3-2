@@ -1,9 +1,15 @@
 import React from 'react';
 import './App.css';
-import { CounterWithParams } from './components/CounterWithParams/CounterWithParams';
+import {store} from './store/store';
+import {Provider} from 'react-redux';
+import {CounterWithParamsContainer} from './components/CounterWithParams/CounterWithParamsContainer';
 
 function App() {
-    return <CounterWithParams/>
+    return (
+        <Provider store={store}>
+            <CounterWithParamsContainer/>
+        </Provider>
+    )
 }
 
 export default App;
