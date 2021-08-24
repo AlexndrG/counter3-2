@@ -1,15 +1,18 @@
 import React from 'react';
 import s from './CounterWithParams.module.css'
-import {CounterWithParamsPropsType} from './CounterWithParamsContainer';
-import {CounterSettingsContainer} from '../CounterSettings/CounterSettingsContainer';
-import {CounterContainer} from '../Counter/CounterContainer';
+import {StateType} from '../../store/store';
+import {useSelector} from 'react-redux';
+import { Counter } from '../Counter/Counter';
+import {CounterSettings} from '../CounterSettings/CounterSettings';
 
-export const CounterWithParams = (props: CounterWithParamsPropsType) => {
+export const CounterWithParams = () => {
+    const counterMode = useSelector<StateType,boolean>(state => state.counter.counterMode)
+
     return (
         <div className={s.main}>
-            {props.counterMode
-                ? <CounterContainer/>
-                : <CounterSettingsContainer/>}
+            {counterMode
+                ? <Counter/>
+                : <CounterSettings/>}
         </div>
     )
 }

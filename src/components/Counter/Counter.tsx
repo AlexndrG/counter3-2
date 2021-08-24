@@ -2,41 +2,52 @@ import React from 'react';
 import s from './Counter.module.css'
 import {Display} from '../Display/Display';
 import {Button} from '../Button/Button';
-import { CounterPropsType } from './CounterContainer';
+import {useDispatch, useSelector} from 'react-redux';
+import {StateType} from '../../store/store';
+import {CounterStateType, setCounterMode, setCounterValue} from '../../store/counter-reducer';
 
-export const Counter = (props: CounterPropsType) => {
+export const Counter = () => {
+    const counterState = useSelector<StateType,CounterStateType>(state => state.counter)
+    const dispatch = useDispatch()
+
+    const {
+        counter,
+        minValue,
+        maxValue,
+    } = counterState
+
     const increment = () => {
-        if (props.counter < props.maxValue) {
-            props.setCounterValue(props.counter + 1)
+        if (counter < maxValue) {
+            dispatch(setCounterValue(counter + 1))
         }
     }
 
     const reset = () => {
-        props.setCounterValue(props.minValue)
+        dispatch(setCounterValue(minValue))
     }
 
     const enterSetmode = () => {
-        props.setCounterMode(false)
+        dispatch(setCounterMode(false))
     }
 
     return (
         <div className={s.main}>
 
             <Display
-                counterValue={props.counter}
-                error={props.counter >= props.maxValue}
+                counterValue={counter}
+                error={counter >= maxValue}
             />
 
             <div className={s.buttons}>
                 <Button
                     name={'Inc'}
-                    disabled={props.counter >= props.maxValue}
+                    disabled={counter >= maxValue}
                     callback={increment}
                 />
 
                 <Button
                     name={'Reset'}
-                    disabled={props.counter === props.minValue}
+                    disabled={counter === minValue}
                     callback={reset}
                 />
 

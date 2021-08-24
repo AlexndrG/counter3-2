@@ -4,7 +4,7 @@ const initialState = {
     maxError: false
 }
 
-type CounterSettingsStateType = typeof initialState
+export type CounterSettingsStateType = typeof initialState
 
 type SetButtonDisabledType = {
     type: 'SET_BUTTON_DISABLED'

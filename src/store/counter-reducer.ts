@@ -8,7 +8,7 @@ export const initialState = {
     counterMode: true,
 }
 
-type CounterStateType = typeof initialState
+export type CounterStateType = typeof initialState
 
 
 type SetCounterType = {
